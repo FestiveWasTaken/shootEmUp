@@ -13,6 +13,8 @@ signal laser_shot(elaser_scene, location)
 @onready var timer = $ShootTimer
 
 var elaser_scene = preload("res://scenes/elaser.tscn")
+var explosion_scene = preload("res://scenes/explosion.tscn")
+
 
 func _physics_process(delta):
 	global_position.y += downspeed * delta 
@@ -20,6 +22,10 @@ func _physics_process(delta):
 
 func die():
 	queue_free()
+	var effect = explosion_scene.instantiate()
+	effect.global_position = global_position
+	get_tree().current_scene.add_child(effect)
+	
 	
 func _on_body_entered(body):
 	if body is Player:

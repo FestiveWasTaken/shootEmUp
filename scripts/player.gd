@@ -7,7 +7,7 @@ signal laser_shot(laser_scene, location)
 @onready var gun = $Gun
 
 var laser_scene = preload("res://scenes/laser.tscn")
-
+var explosion_scene = preload("res://scenes/explosion.tscn")
 var shootCD := false
 
 func _process(delta):
@@ -31,3 +31,6 @@ func shoot():
 	
 func die():
 	queue_free()
+	var effect = explosion_scene.instantiate()
+	effect.global_position = global_position
+	get_tree().current_scene.add_child(effect)

@@ -1,14 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddfkqxvyug5my"]
+[gd_scene load_steps=8 format=3 uid="uid://ddfkqxvyug5my"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_qjg3n"]
 [ext_resource type="PackedScene" uid="uid://d1scicseyoio2" path="res://player.tscn" id="2_2xdaw"]
 [ext_resource type="PackedScene" uid="uid://rmfsm3mm827s" path="res://scenes/laser.tscn" id="3_m02y2"]
 [ext_resource type="PackedScene" uid="uid://cuaktsuvmk412" path="res://scenes/enemy.tscn" id="4_pdbpa"]
-[ext_resource type="PackedScene" uid="uid://u048axiuawp2" path="res://scenes/enemy1.tscn" id="5_gnctq"]
-[ext_resource type="PackedScene" uid="uid://e26xruqdbraq" path="res://scenes/enemy2.tscn" id="6_dq6bl"]
+[ext_resource type="PackedScene" path="res://scenes/enemy1.tscn" id="5_gnctq"]
+[ext_resource type="PackedScene" path="res://scenes/enemy2.tscn" id="6_dq6bl"]
+[ext_resource type="Texture2D" uid="uid://cjachjgf6jd3f" path="res://assets/blue.png" id="7_r7347"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_qjg3n")
+enemy_scenes = Array[PackedScene]([ExtResource("5_gnctq"), ExtResource("6_dq6bl"), ExtResource("4_pdbpa")])
 
 [node name="player" parent="." instance=ExtResource("2_2xdaw")]
 position = Vector2(270, 800)
@@ -30,8 +32,28 @@ position = Vector2(433, 154)
 
 [node name="enemy2" parent="." instance=ExtResource("6_dq6bl")]
 position = Vector2(326, 61)
-shootspeed = 1.5
 
 [node name="enemy4" parent="." instance=ExtResource("6_dq6bl")]
 position = Vector2(157, 63)
-shootspeed = 1.5
+
+[node name="EnemyContainer" type="Node2D" parent="."]
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+wait_time = 1.7
+autostart = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(0, 960)
+
+[node name="blue" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_repeat = 2
+texture = ExtResource("7_r7347")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 540, 960)
+
+[node name="Explosion" type="CPUParticles2D" parent="."]
+
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
