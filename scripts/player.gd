@@ -23,6 +23,8 @@ func _physics_process(delta):
 	Input.get_axis("move_up", "move_down"))
 	velocity = direction * speed
 	move_and_slide()
+	var max_border = get_viewport_rect().size - Vector2(25,25)
+	global_position = global_position.clamp(Vector2(25,25), max_border)
 
 func shoot():
 	laser_shot.emit(laser_scene, gun.global_position) #calls the laser scene to spawn from ship

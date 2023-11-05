@@ -2,7 +2,9 @@ class_name Enemy extends Area2D
 
 signal laser_shot(elaser_scene, location)
 
-@export var speed = 50
+@export var downspeed = 50
+@export var sidespeed = 50
+@export var shootspeed = 1.5
 
 @onready var enemy = $"."
 
@@ -13,8 +15,8 @@ signal laser_shot(elaser_scene, location)
 var elaser_scene = preload("res://scenes/elaser.tscn")
 
 func _physics_process(delta):
-	global_position.y += speed * delta 
-	global_position.x += speed * delta 
+	global_position.y += downspeed * delta 
+	global_position.x += sidespeed * delta 
 
 func die():
 	queue_free()
@@ -28,10 +30,9 @@ func _on_visible_on_screen_notifier_2d_screen_exited():  #have laser despawn on 
 	die()
 
 func _ready():
-	timer.wait_time = 1
+	timer.wait_time = shootspeed
 	timer.start()
 
 func _on_shoot_timer_timeout():
 	var elaser = elaser_scene.instantiate()
-	print("bang")
 	enemy.add_child(elaser)

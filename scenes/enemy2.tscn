@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://e26xruqdbraq"]
+
+[ext_resource type="PackedScene" uid="uid://cuaktsuvmk412" path="res://scenes/enemy.tscn" id="1_fdl01"]
+[ext_resource type="Texture2D" uid="uid://cpeo0tl6r6t2s" path="res://assets/enemyship1.png" id="2_uwhde"]
+
+[node name="enemy" instance=ExtResource("1_fdl01")]
+downspeed = 300
+sidespeed = 0
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_uwhde")

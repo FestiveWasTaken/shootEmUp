@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://u048axiuawp2"]
+
+[ext_resource type="PackedScene" uid="uid://cuaktsuvmk412" path="res://scenes/enemy.tscn" id="1_pmrwh"]
+
+[node name="enemy" instance=ExtResource("1_pmrwh")]
+sidespeed = -50

@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddfkqxvyug5my"]
+[gd_scene load_steps=7 format=3 uid="uid://ddfkqxvyug5my"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_qjg3n"]
 [ext_resource type="PackedScene" uid="uid://d1scicseyoio2" path="res://player.tscn" id="2_2xdaw"]
 [ext_resource type="PackedScene" uid="uid://rmfsm3mm827s" path="res://scenes/laser.tscn" id="3_m02y2"]
 [ext_resource type="PackedScene" uid="uid://cuaktsuvmk412" path="res://scenes/enemy.tscn" id="4_pdbpa"]
+[ext_resource type="PackedScene" uid="uid://u048axiuawp2" path="res://scenes/enemy1.tscn" id="5_gnctq"]
+[ext_resource type="PackedScene" uid="uid://e26xruqdbraq" path="res://scenes/enemy2.tscn" id="6_dq6bl"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_qjg3n")
@@ -21,7 +23,15 @@ position = Vector2(-101, 754)
 position = Vector2(3, 6)
 
 [node name="enemy" parent="." instance=ExtResource("4_pdbpa")]
-position = Vector2(287, 292)
+position = Vector2(65, 157)
 
-[node name="enemy2" parent="." instance=ExtResource("4_pdbpa")]
-position = Vector2(66, 175)
+[node name="enemy3" parent="." instance=ExtResource("5_gnctq")]
+position = Vector2(433, 154)
+
+[node name="enemy2" parent="." instance=ExtResource("6_dq6bl")]
+position = Vector2(326, 61)
+shootspeed = 1.5
+
+[node name="enemy4" parent="." instance=ExtResource("6_dq6bl")]
+position = Vector2(157, 63)
+shootspeed = 1.5
