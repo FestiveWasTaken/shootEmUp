@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://deb3ofvd4li6u"]
+
+[ext_resource type="Texture2D" uid="uid://bnflds1yp1w4l" path="res://assets/laserRed15.png" id="1_bc77k"]
+[ext_resource type="Script" path="res://scripts/elaser.gd" id="1_t4k1a"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qccbw"]
+radius = 5.0
+height = 58.0
+
+[node name="Elaser" type="Area2D"]
+collision_layer = 8
+script = ExtResource("1_t4k1a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bc77k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_qccbw")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -45)
+scale = Vector2(0.3, 0.45)

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1scicseyoio2"]
+
+[ext_resource type="Texture2D" uid="uid://bmwksxr5dvor4" path="res://assets/playership.png" id="1_315kd"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_kmawy"]
+
+[node name="player" type="CharacterBody2D" groups=["player"]]
+collision_mask = 10
+motion_mode = 1
+script = ExtResource("1_kmawy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_315kd")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-1, -21, -1, -18, -8, -11, -12, -7, -13, 1, -18, -5, -19, -1, -20, 2, -22, -1, -23, 0, -23, 8, -24, 9, -24, 11, -22, 12, -22, 16, -20, 17, -12, 17, -8, 21, -4, 23, 0, 20, 3, 23, 7, 22, 10, 19, 13, 18, 20, 17, 22, 16, 22, 12, 24, 12, 24, 8, 23, 9, 23, -1, 21, -1, 21, 3, 19, -1, 19, -6, 13, 0, 12, -4, 12, -8, 1, -17, 1, -21, 0, -22)
+
+[node name="Gun" type="Marker2D" parent="."]
